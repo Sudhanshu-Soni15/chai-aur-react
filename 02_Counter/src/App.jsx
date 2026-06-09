@@ -9,11 +9,15 @@ function App() {
   let [counter, setCounter] = useState(15);
 
   const addvalue = () => {
+    if (counter < 20)
     setCounter(counter + 1);
+
   };
 
   const removevalue = () => {
+    if (counter > 0){
     setCounter(counter - 1);
+  }
   };
 
   return (
@@ -21,9 +25,9 @@ function App() {
       <h1>Chai aur code </h1>
       <h1>Counter value : {counter} </h1>
 
-      <button onClick={addvalue}>Add value </button>
+      <button onClick={addvalue} disabled={counter === 20}>Add value </button>
       <br />
-      <button onClick={removevalue}> Remove value </button>
+      <button onClick={removevalue} disabled = {counter === 0}> Remove value </button>
     </>
   );
 }
