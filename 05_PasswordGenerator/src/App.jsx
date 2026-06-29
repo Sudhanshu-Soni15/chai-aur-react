@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "./assets/vite.svg";
 import heroImg from "./assets/hero.png";
@@ -24,6 +24,14 @@ function App() {
     setPassword(pass);
   }, [length, numberAllowed, charAllowed, setPassword]);
 
+  const passwordref = useRef(null);
+
+  const copyPassword = useCallback(() => {
+    passwordref.current?.select();
+    passwordref.current?.setSelectionRange(0, 99);
+    window.navigator.clipboard.writeText(password);
+  }, [password]);
+
   useEffect(() => {
     passswordGenerator();
   }, [length, numberAllowed, charAllowed, passswordGenerator]);
@@ -40,9 +48,13 @@ function App() {
             className="w-full py-2 px-3  bg-amber-50 "
             placeholder="password"
             readOnly
+            ref={passwordref}
           />
 
-          <button className="bg-blue-500 text-white px-3 py-2 shrink-0">
+          <button
+            className="bg-blue-500 text-white px-3 py-2 shrink-0"
+            onClick={copyPassword}
+          >
             Copy
           </button>
         </div>
