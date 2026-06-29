@@ -21,7 +21,9 @@ function App() {
           </button>
 
           <button
-            className="text-white bg-yellow-400 rounded-full px-4 py-1 outline-none "
+            className="text-white bg-yellow-400 rounded-full px-4 py-1 focus:outline-none
+    focus:ring-2
+    focus:ring-blue-500 "
             onClick={() => {
               setColor("Yellow");
             }}
