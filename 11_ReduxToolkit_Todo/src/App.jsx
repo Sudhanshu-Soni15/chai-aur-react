@@ -3,6 +3,8 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "./assets/vite.svg";
 import heroImg from "./assets/hero.png";
 import "./App.css";
+import AddTodo from "./components/AddTodo";
+import Todos from "./components/Todos";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -11,6 +13,8 @@ function App() {
     <>
       <h1 className="text-3xl font-bold text-center text-blue-500">
         Welcome to Vite + React
+        <AddTodo />
+        <Todos />
       </h1>
     </>
   );
